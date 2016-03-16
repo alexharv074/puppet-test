@@ -1,16 +1,9 @@
 require 'spec_helper'
-
-describe 'test' do
+describe 'foo' do
   it {
-    is_expected.to contain_file('/etc/resolv.conf').with(
-      'ensure'  => 'present',
-      'mode'    => '0640',
-      'group'   => 'root',
-      'owner'   => 'root',
-      'content' => "search server.com\n",
+    File.write(
+      'foo.json',
+      PSON.pretty_generate(catalogue)
     )
   }
-it {
-  verify_contents(catalogue, '/etc/resolv.conf', ['search server.com'])
-}
 end
