@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'foo' do
+describe 'test' do
   it {
     File.write(
       'foo.json',
