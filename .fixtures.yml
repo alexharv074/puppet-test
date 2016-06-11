@@ -1,6 +1,3 @@
 fixtures:
-  repositories:
-    aws:
-      repo: https://github.com/puppetlabs/puppetlabs-aws.git
   symlinks:
-    provisioning: "#{source_dir}"
+    test: "#{source_dir}"
