@@ -1,3 +1,3 @@
 class test {
-  include test::params
+  include network::hiera
 }

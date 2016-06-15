@@ -1,8 +1,13 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
-
-fixture_path = File.expand_path(File.join(__FILE__, '..', 'fixtures'))
+require 'rspec-puppet-utils'
 
 RSpec.configure do |c|
-  c.module_path = File.join(fixture_path, 'modules')
-  c.manifest_dir = File.join(fixture_path, 'manifests')
+  c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
+  c.default_facts = {
+    :kernel                    => 'Linux',
+    :osfamily                  => 'RedHat',
+    :operatingsystem           => 'RedHat',
+    :operatingsystemrelease    => '6.5',
+    :operatingsystemmajrelease => '6',
+  }
 end
