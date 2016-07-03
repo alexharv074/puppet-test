@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'foo' do
-  it { is_expected.to contain_notify('baz') }
+describe 'test' do
+  it { is_expected.to compile.with_all_deps }
 end

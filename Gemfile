@@ -10,7 +10,7 @@ group :development, :test do
 #  gem 'simplecov',               :require => false
   gem 'beaker',                  :require => false
   gem 'beaker-rspec',            :require => false
-  gem 'rspec-puppet-utils',      :require => false
+  gem 'beaker-puppet_install_helper',  :require => false
 end
 
 if facterversion = ENV['FACTER_GEM_VERSION']
