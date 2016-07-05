@@ -6,3 +6,5 @@ spec/fixtures/
 pkg/
 .bundle/
 vendor/
+log/
+myclass.json
