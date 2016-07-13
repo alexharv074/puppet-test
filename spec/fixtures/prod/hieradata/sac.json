@@ -1,0 +1,5 @@
+{
+  "icinga_servers": [
+    "icinga101.x.x.x"
+  ]
+}

@@ -1,0 +1,6 @@
+---
+foo:
+  - 'a'
+  - 'b'
+
+myarray: "%{alias('foo')}"
