@@ -1,3 +1,5 @@
 fixtures:
+  repositories:
+    etc_services: https://github.com/ccin2p3/puppet-etc_services.git
   symlinks:
     test: "#{source_dir}"

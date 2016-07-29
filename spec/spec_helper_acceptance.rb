@@ -11,6 +11,7 @@ RSpec.configure do |c|
   c.before :suite do
     hosts.each do |host|
       copy_module_to(host, :source => proj_root, :module_name => 'test')
+      puppet_module_install(:source => proj_root, :module_name => 'ccin2p3-etc_services')
     end
   end
 end

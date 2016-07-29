@@ -1,14 +1,10 @@
 class test {
-  file { '/opt/cdadmin':
-    ensure => 'directory',
-    mode => '0755',
-    owner => 'root',
-    group => 'root',
+
+  $val = 600
+  $val.each |Integer $index| {
+    etc_services { "my_srv$index/tcp" :
+      port => "25$index",
+    }
   }
-  file { '/opt/cdadmin/bin':
-    ensure => 'directory',
-    mode => '0755',
-    owner => 'root',
-    group => 'root', 
-  }
+
 }
