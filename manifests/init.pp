@@ -1,9 +1,8 @@
 class test (
   $foo = $test::params::foo,
+  $bar = $test::params::bar,
 ) inherits test::params {
 
-  file { '/etc/httpd/conf.d/example.com.conf':
-    content => template('test/mytemplate.erb'),
-  }
-
+  contain test::configure
+  notify { 'test': }
 }
