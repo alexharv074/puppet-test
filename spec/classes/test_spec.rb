@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'test' do
+describe 'foo' do
   it { File.write('myclass.json', PSON.pretty_generate(catalogue)) }
 end
