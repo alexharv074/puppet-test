@@ -3,4 +3,4 @@ fixtures:
     stdlib:
       repo: https://github.com/puppetlabs/puppetlabs-stdlib.git
   symlinks:
-    test: "#{source_dir}"
+    foo: "#{source_dir}"
