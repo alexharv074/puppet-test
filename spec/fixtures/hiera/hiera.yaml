@@ -1,18 +1,7 @@
 ---
-:backends: 
-  - json
-
-:hierarchy: 
-  - "%{hostname}.%{nt_environment}.%{nt_location}"
-  - "%{nt_type}.%{nt_environment}.%{nt_location}"
-  - "%{nt_type}.%{nt_environment}"
-  - "%{nt_environment}.%{nt_location}"
-  - "%{nt_environment}"
-  - "%{nt_location}"
-  - world
-  - default
-
-:logger: console # debug
-
-:json:
-  :datadir: 'spec/fixtures/%{::environment}/hieradata'
+:backends:
+  - yaml
+:hierarchy:
+  - common
+:yaml:
+  :datadir: 'spec/fixtures/hieradata'

@@ -1,11 +1,5 @@
-# Ensure that Apache listens on port 80
-Listen 80
-<VirtualHost *:80>
-  DocumentRoot "/www/example1"
-  ServerName www.example.com
-</VirtualHost>
-
-<VirtualHost *:80>
-  DocumentRoot "/www/example2"
-  ServerName www.example.org
-</VirtualHost>
+<% @myservers.each do |server| -%>
+<% server.keys.each do |s| -%>
+<%= s %>: <% server[s].each do |k,v| -%><%= k -%>: <%= v -%> ;<% end %>
+<% end -%>
+<% end -%>

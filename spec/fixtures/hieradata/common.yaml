@@ -1,6 +1,9 @@
 ---
-foo:
-  - 'a'
-  - 'b'
-
-myarray: "%{alias('foo')}"
+myservers:
+  - serverA:
+      propertyA: valueA
+      propertyB: valueB
+      propertyC: valueC
+  - serverB:
+      propertyA: valueD
+      propertyB: valueE
