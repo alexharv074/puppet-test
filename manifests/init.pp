@@ -1,7 +1,8 @@
 class foo(
 ){
-  $myservers = hiera('myservers')
-  file { '/tmp/foo': 
-    content => template('foo/mytemplate.erb')
+  file {'chmod_script':
+    path => "/data/files/inner_folder/script",
+    ensure => 'present',
+    mode => "+x"
   }
 }
