@@ -1,8 +1,14 @@
-class foo(
-){
-  file {'chmod_script':
-    path => "/data/files/inner_folder/script",
-    ensure => 'present',
-    mode => "+x"
-  }
+class foo {
+  @user { 'foo': ensure => present }
 }
+class bar {
+  include foo
+  User <||>
+}
+class baz {
+  include foo
+  User <||>
+}
+
+include bar
+include baz
