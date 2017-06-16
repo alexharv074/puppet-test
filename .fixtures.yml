@@ -1,4 +1,6 @@
 fixtures:
-  repositories:
+  forge_modules:
+    apache: puppetlabs/apache
+    concat: puppetlabs/concat
   symlinks:
     foo: "#{source_dir}"
