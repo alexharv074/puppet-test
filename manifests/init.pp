@@ -1,26 +1,31 @@
 class foo {
-  include apache
-  apache::vhost {  'mysite':
-    servername      => 'mysite.com',
-    vhost_name      => '1.1.1.1',
-    port            => '80',
-    docroot         => 'mydocroot',
-    directories => [
-      {
-        path => '/var/www/mysite',
-        provider => 'directory',
-        options => ['-Indexes','FollowSymLinks'],
-        expires_active  => 'On',
-        expires_default => '"access plus 0 seconds"',
-        expires_by_type => [
-          'ExpiresByType text/javascript "access plus 12 hours"',
-          'ExpiresByType application/x-javascript "access plus 12 hours"',
-          'ExpiresByType text/css "access plus 12 hours"',
-          'ExpiresByType image/gif "access plus 12 hours"',
-          'ExpiresByType image/jpeg "access plus 12 hours"',
-          'ExpiresByType application/x-shockwave-flash "access plus 12 hours"',
-        ],
-      },
-    ],
+  $connections = {
+    'connection_name1' => {
+      'username' => 'user1',
+      'password' => 'pass1',
+    },
+    'connection_name2' => {
+      'username' => 'user2',
+      'password' => 'pass2',
+    },
+  }
+
+  $jdbc_default = {
+    'testWhileIdle'                => true,
+    'testOnBorrow'                 => true,
+    'testOnReturn'                 => false,
+    'timeBetweenEvictionRunsMillis'=> '30000',
+    'maxActive'                    => '20',
+    'maxWait'                      => '10000',
+    'initialSize'                  => '5',
+    'removeAbandonedTimeout'       => '600',
+    'removeAbandoned'              => false,
+    'logAbandoned'                 => true,
+    'minEvictableIdleTimeMillis'   => '30001',
+  }
+
+  file { '/tmp/myfile':
+    ensure   => file,
+    content => template('foo/mytemplate.erb'),
   }
 }
