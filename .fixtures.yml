@@ -1,4 +1,5 @@
 fixtures:
   forge_modules:
+    archive: puppet/archive
   symlinks:
     foo: "#{source_dir}"

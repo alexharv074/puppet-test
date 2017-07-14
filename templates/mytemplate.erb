@@ -1,0 +1,6 @@
+<% @connections.each do |connection| -%>
+<%= connection %>:
+<% connection.each do |k,v| -%>
+  <%= k %>: <%= v.merge(@jdbc_default) %>
+<% end -%>
+<% end -%>
