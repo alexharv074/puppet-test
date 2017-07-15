@@ -12,5 +12,6 @@ RSpec.configure do |c|
     :operatingsystemrelease => '7.2',
     :operatingsystem => 'RedHat',
     :osfamily => 'RedHat',
+    :fqdn => 'foo',
   }
 end

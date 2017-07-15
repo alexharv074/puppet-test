@@ -1,9 +1,8 @@
 ---
-myservers:
-  - serverA:
-      propertyA: valueA
-      propertyB: valueB
-      propertyC: valueC
-  - serverB:
-      propertyA: valueD
-      propertyB: valueE
+foo::nameserver:
+- 3.3.3.3
+- 4.4.4.4
+
+foo::servers:
+- 5.5.5.5
+- 6.6.6.6
