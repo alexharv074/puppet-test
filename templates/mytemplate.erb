@@ -1,6 +1,5 @@
-<% @connections.each do |connection| -%>
-<%= connection %>:
-<% connection.each do |k,v| -%>
-  <%= k %>: <%= v.merge(@jdbc_default) %>
+<% if @proxy_cache_path.is_a?(Hash) -%>
+<% @proxy_cache_path.sort.each do |key,value| -%>
+  proxy_cache_path        <%= key %> keys_zone=<%= value %> levels=<%= @proxy_cache_levels %> max_size=<%= @proxy_cache_max_size %> inactive=<%= @proxy_cache_inactive -%>
 <% end -%>
 <% end -%>

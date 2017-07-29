@@ -1,0 +1,5 @@
+<%- | Hash[String, Integer] $proxy_cache_path, Integer $proxy_cache_levels, Integer $proxy_cache_max_size, Integer $proxy_cache_inactive | -%>
+<% include stdlib -%>
+<% $proxy_cache_path.keys.sort.each |$key| { -%>
+  proxy_cache_path        <%= $key %> keys_zone=<%= $proxy_cache_path[$key] %> levels=<%= $proxy_cache_levels %> max_size=<%= $proxy_cache_max_size %> inactive=<%= $proxy_cache_inactive -%>
+<% } -%>
