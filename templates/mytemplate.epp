@@ -1,4 +1,5 @@
 <% | Hash $filter | -%>
-<% $filtered = $filter.filter |$k, $v| {$k != 'filtertype'}.each |$k, $v| { -%>
-<%= $k %>: '<%= $v %>'
+<% include stdlib -%>
+<% $filter.keys.sort.filter |$k| {$k != 'filtertype'}.each |$k| { -%>
+<%= $k %>: '<%= $filter[$k] %>'
 <% } -%>
