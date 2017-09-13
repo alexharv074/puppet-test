@@ -1,3 +1,5 @@
-<% @filter.select{|x| x != 'filtertype'}.sort.each do |key, element| -%>
-<%= key %>: '<%= element %>'
+<% @array_of_ip_addresses.each_with_index do |ip, idx| -%>
+  <% if @ip == @ipaddress_eth0 -%>
+    <%= "doing something with #{idx}" -%>
+  <% end -%>
 <% end -%>

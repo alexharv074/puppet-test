@@ -1,17 +1,9 @@
 class foo () {
-  $filter = {
-    'filtertype' => 'foo',
-    'apples'     => 1,
-    'bananas'    => 2,
-  }
-
-  file { '/foo':
+  $array_of_ip_addresses = ['10.0.0.10', '10.0.0.11']
+  $ip = '10.0.0.10'
+  $ipaddress_eth0 = '10.0.0.10'
+  file { '/tmp/foo':
     ensure  => file,
     content => template('foo/mytemplate.erb'),
-  }
-
-  file { '/bar':
-    ensure  => file,
-    content => epp('foo/mytemplate.epp', {'filter' => $filter}),
   }
 }
