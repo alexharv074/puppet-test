@@ -1,9 +1,26 @@
 class foo () {
-  $array_of_ip_addresses = ['10.0.0.10', '10.0.0.11']
-  $ip = '10.0.0.10'
-  $ipaddress_eth0 = '10.0.0.10'
-  file { '/tmp/foo':
+  Exec {
+    path => '/usr/local/bin',
+    refreshonly => true,
+  }
+
+  file { '/tmp/file-1':
     ensure  => file,
-    content => template('foo/mytemplate.erb'),
+    content => 'file-1-content\n',
+  }
+
+  exec { 'exec-1':
+    command   => 'sudo cmd-1',
+    subscribe => File['/tmp/file-1'],
+  }
+  exec { 'exec-2':
+    command   => 'sudo cmd-2',
+    subscribe => File['/tmp/file-1'],
+    require   => Exec['exec-1'],
+  }
+  exec { 'exec-3':
+    command   => 'sudo cmd-3',
+    subscribe => File['/tmp/file-1'],
+    require   => Exec['exec-2'],
   }
 }
