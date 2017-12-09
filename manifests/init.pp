@@ -1,26 +1,31 @@
-class foo () {
-  Exec {
-    path => '/usr/local/bin',
-    refreshonly => true,
+# vim: set paste
+class a {
+  File {
+    mode => '0755',
   }
+  file { '/tmp/foo':
+    ensure => absent,
+  }
+  $x = 'I, Foo'
+}
 
-  file { '/tmp/file-1':
+class a::b (
+  $y = $a::x  # default from class a.
+) inherits a {
+
+  # Override /tmp/foo's ensure
+  # and content attributes.
+
+  File['/tmp/foo'] {
     ensure  => file,
-    content => 'file-1-content\n',
+    content => $y,
   }
 
-  exec { 'exec-1':
-    command   => 'sudo cmd-1',
-    subscribe => File['/tmp/file-1'],
-  }
-  exec { 'exec-2':
-    command   => 'sudo cmd-2',
-    subscribe => File['/tmp/file-1'],
-    require   => Exec['exec-1'],
-  }
-  exec { 'exec-3':
-    command   => 'sudo cmd-3',
-    subscribe => File['/tmp/file-1'],
-    require   => Exec['exec-2'],
+  # Both /tmp/foo and /tmp/bar
+  # will receive the default file
+  # mode of 0755.
+
+  file { '/tmp/bar':
+    ensure => file,
   }
 }

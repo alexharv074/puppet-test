@@ -6,6 +6,7 @@ def verify_contents(subject, title, expected_lines)
 end
 
 RSpec.configure do |c|
+  c.formatter = :documentation
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.default_facts = {
     :ipaddress => '1.1.1.1',
