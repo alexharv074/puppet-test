@@ -3,4 +3,4 @@ fixtures:
 #    stdlib: puppetlabs/stdlib
 #    concat: puppetlabs/concat
   symlinks:
-    a: "#{source_dir}"
+    test: "#{source_dir}"
