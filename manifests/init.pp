@@ -1,6 +1,12 @@
 # vim: set paste
 class test {
   notify { 'test':
-    message  => inline_template("<%% @variable %>"),
+    message  => 'test',
+  }
+}
+
+class test::foo {
+  notify { 'foo':
+    message  => 'foo',
   }
 }
