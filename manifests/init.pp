@@ -1,12 +1,15 @@
 # vim: set paste
-class test {
-  notify { 'test':
-    message  => 'test',
+class test (
+	Hash $testhash = lookup('test::hash', {'merge' => 'hash'}),
+){
+  $testhash.each |$key, $value| {
+    user { $key :
+      ensure     => $value['ensure'],
+      name       => $value['name'],
+      password   => $value['password'],
+      groups     => $value['groups'],
+      managehome => $value['managehome'],
+    }
   }
 }
-
-class test::foo {
-  notify { 'foo':
-    message  => 'foo',
-  }
-}
+include test

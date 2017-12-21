@@ -1,0 +1,14 @@
+# vim: set paste
+---
+test::hash:
+  'fred':
+    name: fred
+    password: somepassword
+    groups: wheel
+    managehome: true
+  'mary':
+    name: mary
+    password: otherpassword
+  'john':
+    name: john
+    password: anotherpassword
