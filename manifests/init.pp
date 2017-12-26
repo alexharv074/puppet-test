@@ -1,15 +1,8 @@
 # vim: set paste
-class test (
-	Hash $testhash = lookup('test::hash', {'merge' => 'hash'}),
-){
-  $testhash.each |$key, $value| {
-    user { $key :
-      ensure     => $value['ensure'],
-      name       => $value['name'],
-      password   => $value['password'],
-      groups     => $value['groups'],
-      managehome => $value['managehome'],
-    }
+class test {
+  $es_hosts = ['foo.example.com', 'bar.example.com']
+  file { '/tmp/foo':
+    content => template('test/mytemplate.erb')
   }
 }
 include test

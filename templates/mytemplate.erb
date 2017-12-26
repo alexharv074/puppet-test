@@ -1,5 +1,1 @@
-<% @array_of_ip_addresses.each_with_index do |ip, idx| -%>
-  <% if @ip == @ipaddress_eth0 -%>
-    <%= "doing something with #{idx}" -%>
-  <% end -%>
-<% end -%>
+discovery.zen.ping.unicast.hosts: ["<%= @es_hosts.join('", "') %>"]
