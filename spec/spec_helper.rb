@@ -8,6 +8,7 @@ end
 RSpec.configure do |c|
   c.formatter = :documentation
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
+  c.parser = 'future'
   c.default_facts = {
     :ipaddress => '1.1.1.1',
     :operatingsystemrelease => '7.2',
