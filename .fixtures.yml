@@ -1,6 +1,5 @@
 fixtures:
   forge_modules:
     stdlib: puppetlabs/stdlib
-#    concat: puppetlabs/concat
   symlinks:
     test: "#{source_dir}"

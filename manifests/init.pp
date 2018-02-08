@@ -1,14 +1,17 @@
 # vim: set paste
 class test (
-  $certificates = hiera('test::install::certificates'), 
 ) {
-  $domains = [
-    'test1.domain.com',
-    'test2.domain.com',
-    'test3.domain.com',
-  ]
-
-  test::install { $domains:
-    certificates =>  $certificates,
+  $data = {
+    'message1' => {
+      message  => 'I am message 1',
+      withpath => false,
+      require  => Notify['message2'],
+    },
+    'message2' => {
+      message  => 'I am message 2',
+      withpath => false,
+    }
   }
+  create_resources(notify, $data)
 }
+include test
