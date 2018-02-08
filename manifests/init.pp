@@ -1,17 +1,14 @@
 # vim: set paste
-class test {
-  include test::foo
-}
+class test (
+  $certificates = hiera('test::install::certificates'), 
+) {
+  $domains = [
+    'test1.domain.com',
+    'test2.domain.com',
+    'test3.domain.com',
+  ]
 
-class test::foo {
-  $foo = hiera('foo')
-  [1,2,3].each |$v| {
-    if ($foo) {
-      include test::bar
-    }
+  test::install { $domains:
+    certificates =>  $certificates,
   }
-}
-
-class test::bar {
-  notify { 'foo': }
 }
