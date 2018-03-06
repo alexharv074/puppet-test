@@ -1,4 +1,6 @@
 class test {
+  $values = ['pci_admin', 'ess_admin']
+
   service { 'splunk':
     ensure =>  running
   }
@@ -8,6 +10,6 @@ class test {
     conf    => 'authorize',
     stanza  => 'role_sc_admin',
     setting => 'importRoles',
-    value   => 'ess_admin',
+    values  => $values,
   }
 }

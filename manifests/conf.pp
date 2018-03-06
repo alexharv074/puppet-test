@@ -11,11 +11,11 @@
 #
 define test::conf(
   Enum['default','local'] $loc  = 'local',
+  Array $values,
   $app,
   $conf,
   $stanza,
   $setting,
-  $value,
 ) {
   $splunk_home = '/home/splunk'
   $splunk_user = 'splunk'
@@ -39,7 +39,7 @@ define test::conf(
     ensure  => present,
     section => $stanza,
     setting => $setting,
-    value   => $value,
+    value   => join($values, ','),
     path    => "${splunk_home}/etc/${app}/${loc}/${conf}.conf",
     require => File["${splunk_home}/etc/${app}/${loc}/${conf}.conf"],
     notify  => Service['splunk'],
