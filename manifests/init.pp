@@ -1,17 +1,13 @@
-# vim: set paste
-class test (
-) {
-  $data = {
-    'message1' => {
-      message  => 'I am message 1',
-      withpath => false,
-      require  => Notify['message2'],
-    },
-    'message2' => {
-      message  => 'I am message 2',
-      withpath => false,
-    }
+class test {
+  service { 'splunk':
+    ensure =>  running
   }
-  create_resources(notify, $data)
+
+  test::conf { "SplunkEnterpriseSecuritySuite/authorize/role_sc_admin/importRoles=ess_admin":
+    app     => 'SplunkEnterpriseSecuritySuite',
+    conf    => 'authorize',
+    stanza  => 'role_sc_admin',
+    setting => 'importRoles',
+    value   => 'ess_admin',
+  }
 }
-include test
