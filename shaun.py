@@ -1,15 +1,15 @@
 class Forms:
     def __init__(self, word):
-        self.singular = word
-        self.plural = word
+        self.word = word
 
-    def inflect(self):
-        self.singular = "a " + self.singular
-        self.plural = self.plural + "s"
-        return {self.singular: self.plural}
+    def singular(self):
+        return "a " + self.word
+
+    def plural(self):
+        return self.word + "s"
 
 words = ["book", "cup", "desk"]
 
 for word in words:
-    item = Forms(word).inflect()
-    print (item)
+    forms = Forms(word)
+    print("{}: singular = {}; plural = {}").format(word, forms.singular(), forms.plural())
