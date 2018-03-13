@@ -7,7 +7,7 @@ apps = `/usr/bin/find /private/tmp -name app.conf|/usr/bin/awk -F/ '{print $(NF-
 
 attributes = {}
 
-apps.split("\n").strip.each do |app|
+apps.split("\n").each do |app|
   myini = IniFile.load("/tmp/#{app}/default/app.conf")
   myini.each_section do |section|
     attributes[app] = myini[section]
