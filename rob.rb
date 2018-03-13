@@ -14,7 +14,7 @@ attributes = {}
 apps.each do |app|
   myini = IniFile.load("/tmp/#{app}/default/app.conf")
   myini.each_section do |section|
-    attributes[app] = "#{myini[section]}"
+    attributes[app] = myini[section]
   end
   pp attributes
 end
