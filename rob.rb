@@ -3,15 +3,11 @@
 require 'inifile'
 require 'pp'
 
-apps = [
-  'test1',
-  'test2',
-  'test3',
-]
+apps = `/usr/bin/find /private/tmp -name app.conf|/usr/bin/awk -F/ '{print $(NF-2)}'|sort -r| uniq`
 
 attributes = {}
 
-apps.each do |app|
+apps.split("\n").strip.each do |app|
   myini = IniFile.load("/tmp/#{app}/default/app.conf")
   myini.each_section do |section|
     attributes[app] = myini[section]
