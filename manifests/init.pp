@@ -4,6 +4,6 @@ class test {
     content => 'I am foo',
   }
   File['/tmp/foo'] {
-    mode => '0400',
+    ensure => absent,
   }
 }
