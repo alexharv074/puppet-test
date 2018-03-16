@@ -10,9 +10,11 @@ describe 'test' do
     )
   end
 
-  it 'should have a comma separated list of values' do
-    is_expected.to contain_ini_setting('/home/splunk/etc/SplunkEnterpriseSecuritySuite/local/authorize.conf').with({
-      'value' => 'pci_admin,ess_admin',
+  it 'is expected to contain file /tmp/foo' do
+    is_expected.to contain_file('/tmp/foo').with({
+      'ensure' => 'file',
+      'mode' => '0400',
+      'content' => 'I am foo',
     })
   end
 end
