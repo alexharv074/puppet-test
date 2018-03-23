@@ -1,9 +1,7 @@
 class test {
+  $my_variable = 'foo'
   file { '/tmp/foo':
     ensure  => file,
-    content => 'I am foo',
-  }
-  File['/tmp/foo'] {
-    ensure => absent,
+    content => template('test/mytemplate.erb')
   }
 }
