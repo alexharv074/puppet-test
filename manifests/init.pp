@@ -1,7 +1,16 @@
 class test {
-  $my_variable = 'foo'
+  exec { '/bin/mkdir -p /tmp/bar ; /usr/bin/touch /tmp/bar/{a,b,c,d,f}': }
+
   file { '/tmp/foo':
-    ensure  => file,
-    content => template('test/mytemplate.erb')
+    ensure  => directory,
+    source  => '/tmp/bar',
+    recurse => true,
+    purge   => true,
+  }
+
+  file { '/tmp/foo/e':
+    ensure => file,
   }
 }
+
+include test
