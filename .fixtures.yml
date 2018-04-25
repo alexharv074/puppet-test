@@ -1,6 +1,5 @@
 fixtures:
   forge_modules:
-#    stdlib: puppetlabs/stdlib
-#    inifile: puppetlabs/inifile
+    stdlib: puppetlabs/stdlib
   symlinks:
     test: "#{source_dir}"
