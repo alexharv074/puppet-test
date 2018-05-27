@@ -1,8 +1,12 @@
 class test {
-  include stdlib
-  if has_key($facts['processors'], 'count') {
-    notice("All OK")
-  }
+file { '/tmp/dest':
+  ensure             => directory,
+  links              => follow,
+  source             => '/tmp/symlink',
+  recurse            => true,
+  source_permissions => ignore,
+  force              => true,
+}
 }
 
 include test
