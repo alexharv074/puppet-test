@@ -10,10 +10,6 @@ RSpec.configure do |c|
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.parser = 'future'
   c.default_facts = {
-    :ipaddress => '1.1.1.1',
-    :operatingsystemrelease => '7.2',
-    :operatingsystem => 'RedHat',
-    :osfamily => 'RedHat',
-    :fqdn => 'foo',
+    :puppetversion => '5.5.1'
   }
 end
