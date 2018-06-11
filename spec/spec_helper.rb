@@ -10,6 +10,7 @@ RSpec.configure do |c|
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.parser = 'future'
   c.default_facts = {
-    :puppetversion => '5.5.1'
   }
 end
+
+at_exit { RSpec::Puppet::Coverage.report!(95) }

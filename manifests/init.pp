@@ -1,5 +1,8 @@
 class test {
-  notify { "IP Address fact is ${::ipaddress}": }
+  file { '/tmp/foo':
+    ensure => file,
+  }
+  file { '/tmp/bar':
+    ensure => file,
+  }
 }
-
-include test
