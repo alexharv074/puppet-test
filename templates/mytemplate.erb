@@ -1,1 +1,6 @@
-<%= Base64.decode64(@my_variable).rpartition(':').last %>
+<% if @server.class == Array -%>
+<% @server.each do |server| -%>
+server   <%= "%-14s" % server %>
+restrict <%= "%-14s" % server %>  <%= @restrict[1] %>
+<% end %>
+<% end -%>

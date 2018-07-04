@@ -1,18 +1,11 @@
 class test {
-  file { '/tmp/foo':
-    ensure  => file,
-    content => $fqdn, # $(facter fqdn)
-  }
 
-  $os_hash = inline_template("<%= @os.to_s %>")
+  $server = ['123.123.1.1','123.123.345.33','123.123.345.33']
+  $restrict = ['1.1.1.1','255.255.255.224']
+
   file { '/tmp/bar':
-    ensure => file,
-    content => $os_hash, # $(facter os)
-  }
-
-  file { '/tmp/baz':
     ensure  => file,
-    content => String($facts['os']),
+    content => template("test/mytemplate.erb"),
   }
 }
 
