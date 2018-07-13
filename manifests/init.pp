@@ -1,12 +1,37 @@
-class test {
+class test (
+  Array[Hash[String, String]] $users_data = [],
+) {
+  $users_data.each |Hash $user| {
+    $username = $user['username']
+    $userkey  = $user['userkey']
 
-  $server = ['123.123.1.1','123.123.345.33','123.123.345.33']
-  $restrict = ['1.1.1.1','255.255.255.224']
-
-  file { '/tmp/bar':
-    ensure  => file,
-    content => template("test/mytemplate.erb"),
+    file { "/home/${username}":
+      ensure => directory,
+      mode   => '0750',
+      owner => $username,
+    }
+    user { $username:
+      ensure => present,
+      shell => '/bin/bash',
+    }
+    ssh_authorized_key { $username:
+      ensure => present,
+      user => $username,
+      type => 'ssh-rsa',
+      key => $userkey,
+    }
   }
 }
 
-include test
+class { 'test':
+  users_data => [
+    {
+      'username' => 'bill',
+      'userkey'  => 'keydata1',
+    },
+    {
+      'username' => 'ted',
+      'userkey'  => 'keydata2',
+    },
+  ]
+}
