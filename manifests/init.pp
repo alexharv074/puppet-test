@@ -24,9 +24,8 @@ class test () {
   $public_host = $server['public_host']
 
   $filtered_data = $public_host.filter |$k, $v| {
-    has_key($public_host[$k], 'partition') and
-    has_key($public_host[$k]['partition'], 'name') and
-      $public_host[$k]['partition']['name'] == 'BLA'
+    has_key($v, 'partition') and has_key($v['partition'], 'name')
+      and $v['partition']['name'] == 'BLA'
   }
 
   notice($filtered_data)
