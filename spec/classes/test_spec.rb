@@ -1,12 +1,6 @@
 require 'spec_helper'
 
-describe 'test' do
-  let(:params) do
-    {
-      'ensure' => 'present',
-    }
-  end
-
+describe 'profile::base' do
   it 'should write a compiled catalog' do
     is_expected.to compile.with_all_deps
     File.write(
