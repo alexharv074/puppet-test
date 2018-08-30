@@ -1,20 +1,31 @@
-class profile::base::yum {
-}
+class opstools {
 
-class profile::base::tools {
-  require profile::base::yum
+  # We assume the existence of a custom fact opsuser.
+  #
+  assert_type(Boolean, $facts['opsuser'])
 
-  $packages = [
-    'package1',
-    'package2'
-  ]
-
-  package { $packages:
-    ensure => present,
+  $ensure = $facts['opuser'] ? {
+    true  => installed,
+    false => absent,
   }
-}
 
-class profile::base {
-  include profile::base::yum
-  include profile::base::tools
+  # Or get these from Hiera.
+  #
+  $packages = {
+    'rpm' => [
+      'lsof',
+      'strace',
+      'tcpdump',
+    },
+    'pip' => [
+      'awscli',
+    ]
+  }
+
+  keys($packages).each |$provider| {
+    package { $packages[$provider]:
+      ensure   => $ensure,
+      provider => $provider,
+    }
+  }
 }
