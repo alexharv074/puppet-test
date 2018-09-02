@@ -10,7 +10,11 @@ RSpec.configure do |c|
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.parser = 'future'
   c.default_facts = {
-    'os' => {"name"=>"Darwin", "family"=>"Darwin", "release"=>{"major"=>"14", "minor"=>"5", "full"=>"14.5.0"}},
-    'fqdn' => 'Alexs-MacBook-Pro-2.local',
+    'osfamily' => 'RedHat',
+    'operatingsystem' => 'RedHat',
+    'operatingsystemmajrelease' => '7',
+    #'os' => {"name"=>"Darwin", "family"=>"Darwin", "release"=>{"major"=>"14", "minor"=>"5", "full"=>"14.5.0"}},
+    #'fqdn' => 'Alexs-MacBook-Pro-2.local',
+    'path' => '/chroot',
   }
 end

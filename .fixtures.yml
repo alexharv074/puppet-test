@@ -1,5 +1,7 @@
 fixtures:
   forge_modules:
     stdlib: puppetlabs/stdlib
+    bind: camptocamp/bind
+    concat: puppetlabs/concat
   symlinks:
     profile: "#{source_dir}"

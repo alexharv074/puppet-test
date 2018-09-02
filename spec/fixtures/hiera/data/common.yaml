@@ -1,12 +1,22 @@
-# vim: set paste
 ---
-test::install::certificates:
-  test1.domain.com:
-    certificatefile: 'certificate1.crt'
-    certificatepass: 'testpass1'
-  test2.domain.com:
-    certificatefile: 'certificate2.crt'
-    certificatepass: 'testpass2'
-  test3.domain.com:
-    certificatefile: 'certificate3.crt'
-    certificatepass: 'testpass3'
+bind::zone:
+  'test.ltd':
+    ensure: present
+    zone_contact: 'contact.test.ltd'
+    zone_ns:
+      - 'ns0.test.ltd'
+      - 'ns1.test.ltd'
+    zone_serial: '2018010101'
+    zone_ttl: '767200'
+    zone_origin: 'test.ltd'
+    hash_data:
+      "newyork":
+        owner: "11.22.33.44"
+      "tokyo":
+        owner: "22.33.44.55"
+      "london":
+        owner: "33.44.55.66"
+
+#bind::cname:
+#  ensure: present
+#  record_type: master
