@@ -1,26 +1,13 @@
-class profile::bind {
-  include bind
-  $conf = lookup('bind::zone')
-  create_resources(profile::bind::make::zone, $conf)
-}
+class test {
+  $pkgs = {
+    'epel-release' => 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm',
+    'pgadmin4' => 'https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm',
+  }
 
-define profile::bind::make::zone (
-  Enum['present','absent'] $ensure,
-  String         $zone_contact,
-  Array[String]  $zone_ns,
-  String         $zone_serial,
-  String         $zone_ttl,
-  String         $zone_origin,
-  Hash[String, Hash[String, String]] $hash_data,
-) {
-  bind::zone { $name:
-    ensure       => $ensure,
-    zone_contact => $zone_contact,
-    zone_ns      => $zone_ns,
-    zone_serial  => $zone_serial,
-    zone_ttl     => $zone_ttl,
-    zone_origin  => $zone_origin,
+  $pkgs.each |$pkg, $source| {
+    yum::install { $pkg:
+      ensure => present,
+      source => $source,
+    }
   }
 }
-
-include profile::bind
