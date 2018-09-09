@@ -1,11 +1,12 @@
-RSpec.shared_examples "helpers" do
-  context "bar" do
-    it "baz" do
-      expect(true).to be true
-    end
+describe 'foo' do
+  let(:facts) do
+    {
+      'foo' => 'bar',
+      'baz' => 'qux',
+    }
   end
-end
 
-describe "foo" do
-  include_examples "helpers"
+  it 'fact foo should be bar' do
+    expect(facts['foo']).to eq 'bar'
+  end
 end
