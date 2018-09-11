@@ -1,6 +1,5 @@
 fixtures:
   forge_modules:
-    stdlib: puppetlabs/stdlib
-    yum: puppet/yum
+    firewalld: crayfishx/firewalld
   symlinks:
     test: "#{source_dir}"

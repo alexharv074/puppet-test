@@ -1,13 +1,10 @@
 class test {
-  $pkgs = {
-    'epel-release' => 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm',
-    'pgadmin4' => 'https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-centos10-10-2.noarch.rpm',
-  }
+  include firewalld
 
-  $pkgs.each |$pkg, $source| {
-    yum::install { $pkg:
-      ensure => present,
-      source => $source,
-    }
+  firewalld_port { 'Open port 1337 in the public zone':
+    ensure   => present,
+    zone     => 'public',
+    port     => 1337,
+    protocol => 'tcp',
   }
 }
