@@ -1,10 +1,11 @@
 class test {
-  include firewalld
-
-  firewalld_port { 'Open port 1337 in the public zone':
-    ensure   => present,
-    zone     => 'public',
-    port     => 1337,
-    protocol => 'tcp',
+  exec { 'make-git-color':
+    command     => '/usr/bin/git config --global color.ui auto',
+    logoutput   => 'on_failure',
+    user        => 'alexharvey',
+    environment => 'HOME=/Users/alexharvey',
+    timeout     => 1200,
   }
 }
+
+include test
