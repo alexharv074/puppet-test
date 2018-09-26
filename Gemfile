@@ -4,6 +4,7 @@ gem 'puppetlabs_spec_helper'
 gem 'rspec-puppet-utils'
 gem 'pry-rescue'
 gem 'parallel_tests'
+gem 'CFPropertyList'
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']
   gem 'puppet', puppetversion

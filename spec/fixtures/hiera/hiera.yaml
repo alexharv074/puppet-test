@@ -4,6 +4,8 @@ defaults:
   datadir: data
   data_hash: yaml_data
 hierarchy:
-  - name: "All levels"
+  - name: "YAML data: environments, stages, roles, common"
     paths:
-    - common.yaml
+      - "roles/%{role}/common.yaml"
+      - "roles/common.yaml"
+      - "common.yaml"
