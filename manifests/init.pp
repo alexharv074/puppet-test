@@ -1,10 +1,18 @@
 class test {
-  exec { 'make-git-color':
-    command     => '/usr/bin/git config --global color.ui auto',
-    logoutput   => 'on_failure',
-    user        => 'alexharvey',
-    environment => 'HOME=/Users/alexharvey',
-    timeout     => 1200,
+  file {'/tmp/www':
+    ensure    => directory,
+    recurse   => true,
+    purge     => true,
+    force     => true,
+  } ->
+  file {'/tmp/www/html':
+    ensure => directory,
+    recurse => true,
+    purge   => true,
+  } ->
+  file {'/tmp/www/html/appicon.ico':
+    ensure  => file,
+    content => ''
   }
 }
 
