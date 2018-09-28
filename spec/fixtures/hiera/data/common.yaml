@@ -1,2 +1,6 @@
 ---
-foo : "bar"
+puppet:
+  running: running
+  atboot: true
+
+puppet::running: foo
