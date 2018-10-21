@@ -1,19 +1,14 @@
-class test {
-  file {'/tmp/www':
-    ensure    => directory,
-    recurse   => true,
-    purge     => true,
-    force     => true,
-  } ->
-  file {'/tmp/www/html':
-    ensure => directory,
-    recurse => true,
-    purge   => true,
-  } ->
-  file {'/tmp/www/html/appicon.ico':
-    ensure  => file,
-    content => ''
+class hostname (
+  Pattern[/^[A-Z]{3}[LW][A-Z]{3}\d{3}$/] $hostname,
+  ) {
+  host { 'hostname':
+    ensure  => present,
+    name    => $hostname,
+    ip      => $facts['ipaddress'],
+    host_aliases => $hostname,
   }
 }
 
-include test
+class { 'hostname':
+	hostname => "",
+}
