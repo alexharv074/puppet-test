@@ -1,14 +1,17 @@
-class hostname (
-  String[1] $hostname,
-  ) {
-  host { 'hostname':
-    ensure  => present,
-    name    => $hostname,
-    ip      => $facts['ipaddress'],
-    host_aliases => $hostname,
+class b () {
+  notify { 'Z':
+    require => Notify['X'],
   }
 }
 
-class { 'hostname':
-	hostname => "",
+class a () {
+  notify { 'X': }
+  exec { 'Y':
+    command     => '/bin/echo Y',
+    refreshonly => true,
+    subscribe   => Notify['X'],
+  }
 }
+
+include a
+include b
