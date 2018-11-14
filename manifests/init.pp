@@ -1,5 +1,5 @@
 class hostname (
-  Pattern[/^[A-Z]{3}[LW][A-Z]{3}\d{3}$/] $hostname,
+  String[1] $hostname,
   ) {
   host { 'hostname':
     ensure  => present,
