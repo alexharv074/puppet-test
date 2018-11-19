@@ -1,6 +1,12 @@
 require 'spec_helper'
 
-describe 'hostname' do
+describe 'test' do
   let(:hiera_config) { 'spec/fixtures/hiera/hiera.yaml' }
-  it { is_expected.to compile }
+  it 'should compile' do
+    is_expected.to compile
+    File.write(
+      'myclass.json',
+      PSON.pretty_generate(catalogue)
+    )
+  end
 end

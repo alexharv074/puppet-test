@@ -1,2 +1,5 @@
 ---
-hostname::hostname: ''
+elasticsearch::clusters:
+  'elasticsearch-dev':
+    masterlist: [ "elasticsearchdev01.domain.com", "elasticsearchdev02.domain.com", "elasticsearchdev03.domain.com" ]
+    kibanalist: [ "kibanadev01.domain.com" ]
