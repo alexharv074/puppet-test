@@ -3,3 +3,6 @@ elasticsearch::clusters:
   'elasticsearch-dev':
     masterlist: [ "elasticsearchdev01.domain.com", "elasticsearchdev02.domain.com", "elasticsearchdev03.domain.com" ]
     kibanalist: [ "kibanadev01.domain.com" ]
+  'elasticsearch-prod':
+    masterlist: [ "elasticsearchprod01.domain.com", "elasticsearchprod02.domain.com", "elasticsearchprod03.domain.com" ]
+    kibanalist: [ "kibanaprod01.domain.com" ]
