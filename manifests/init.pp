@@ -1,28 +1,11 @@
 class test {
-  $account = {
-    'user@desktop1' => {
-      'owner' => 'john',
-      'type'  => 'ssh-rsa',
-      'public' => 'SomePublicKey',
-    },
-    'user@desktop2' => {
-      'owner' => 'mary',
-      'type'  => 'ssh-rsa',
-      'public' => 'SomePublicKey',
-    },
-    'user@desktop3' => {
-      'owner' => 'john',
-      'type'  => 'ssh-rsa',
-      'public' => 'SomePublicKey',
-    },
-    'user@desktop4' => {
-      'owner' => 'matt',
-      'type'  => 'ssh-rsa',
-      'public' => 'SomePublicKey',
-    }
+  mount { "/SERVER/New York_share":
+    atboot  => true,
+    ensure  => mounted,
+    device  => "//MOUNTSERVER/New\040York_share",
+    fstype  => "cifs",
+    options => "credentials=/tmp/id,uid=oracle,gid=oinstall,iocharset=utf8,file_mode=0644,dir_mode=0775,_netdev,soft",
   }
-
-  notice($account.filter |$k, $v| { $v['owner'] == 'john' }.keys)
 }
 
 include test
