@@ -1,11 +1,11 @@
 class test {
-  $servers_list = hiera('my_list::servers')
-  $list_broker = join(
-    $servers_list
-      .filter |$key, $value| { $key != $::fqdn }
-      .map    |$key, $value| { "broker-${value['id']}-check" },
-    ','
-  )
+  $servers_list = lookup('my_list::servers')
+
+  $list_broker = $servers_list
+    .filter |$key, $value| { $key != $::fqdn }
+    .map    |$key, $value| { "broker-${value['id']}-check" }
+    .join(',')
+
   notify {"******* ${list_broker}": }
 }
 
