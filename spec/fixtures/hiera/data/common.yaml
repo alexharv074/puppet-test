@@ -1,8 +1,10 @@
 ---
-elasticsearch::clusters:
-  'elasticsearch-dev':
-    masterlist: [ "Alexs-MacBook-Pro.local", "elasticsearchdev01.domain.com", "elasticsearchdev02.domain.com", "elasticsearchdev03.domain.com" ]
-    kibanalist: [ "kibanadev01.domain.com" ]
-  'elasticsearch-prod':
-    masterlist: [ "elasticsearchprod01.domain.com", "elasticsearchprod02.domain.com", "elasticsearchprod03.domain.com" ]
-    kibanalist: [ "kibanaprod01.domain.com" ]
+my_list::servers:
+  server1.subnet.env.com:
+    id: 0
+  server2.subnet.env.com:
+    id: 1
+  server3.subnet.env.com:
+    id: 2
+  server4.subnet.env.com:
+    id: 3
