@@ -1,9 +1,0 @@
----
-iacbox:
-  basic:
-    name: ''
-    password: ''
-nexus:
-  basic:
-    name: cpreader
-    password: swordfish
