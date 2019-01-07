@@ -1,12 +1,12 @@
-class test {
-  $servers_list = lookup('my_list::servers')
-
-  $list_broker = $servers_list
-    .filter |$key, $value| { $key != $::fqdn }
-    .map    |$key, $value| { "broker-${value['id']}-check" }
-    .join(',')
-
-  notify {"******* ${list_broker}": }
+class test ($repos) {
+	ensure_packages(['httpd'], {'ensure' => 'present'})
+	$repos.each |String $repo| {
+		file {"/etc/httpd/conf.d/${repo}_repo1.conf":
+			ensure  => file,
+			mode    => '0644',
+			content => template('test/mytemplate.erb'),
+		}
+	}
 }
 
 include test

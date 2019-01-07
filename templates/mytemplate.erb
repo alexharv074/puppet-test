@@ -1,7 +1,22 @@
-<% if @server.class == Array -%>
-<% @server.each do |server| -%>
-server   <%= "%-14s" % server %>
-restrict <%= "%-14s" % server %>  <%= @restrict[1] %>
-<% end %>
-<% end -%>
-<%= @val[0..-5].gsub('-','') %>
+<% @repos.each do |rep|
+  if rep == "centos"
+    $x = "/opt/repos/yum/" + rep
+    $_repo = rep
+  else
+    $x = "/opt/repos/" + rep
+    $_repo = rep
+  end
+end -%>
+Alias /<%= $_repo %> <%= $x %>
+DocumentRoot  <%= $x %>
+IndexOptions NameWidth=* +SuppressDescription
+<Directory <%= $x %>>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+ErrorLog logs/<%= $_repo %>_repo1_error.log
+LogLevel warn
+
+CustomLog logs/<%= $_repo %>_repo1_access.log combined
