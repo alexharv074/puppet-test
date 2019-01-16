@@ -1,10 +1,2 @@
 ---
-my_list::servers:
-  server1.subnet.env.com:
-    id: 0
-  server2.subnet.env.com:
-    id: 1
-  server3.subnet.env.com:
-    id: 2
-  server4.subnet.env.com:
-    id: 3
+foo: bar
