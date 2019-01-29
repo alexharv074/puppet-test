@@ -1,17 +1,7 @@
-require 'spec_helper'
+require 'spec_helper' 
 
 describe 'test' do
-  let(:hiera_config) { 'spec/fixtures/hiera/hiera.yaml' }
-  let(:params) do
-    {
-      :repos => ['centos','ubuntu']
-    }
-  end
-  it 'should compile' do
-    is_expected.to compile
-    File.write(
-      'myclass.json',
-      PSON.pretty_generate(catalogue)
-    )
+  it 'rspec' do
+    expect(RSpec.configuration.default_facts['ipaddress']).to eq "172.16.254.254"
   end
 end
