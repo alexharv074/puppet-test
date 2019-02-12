@@ -1,20 +1,17 @@
 class test () {
   file { 'folder_a':
-    source  => 'puppet:///modules/folder_a',
+    source  => 'file:///tmp/source',
+    source_permissions => ignore,
     ensure  => 'directory',
     recurse => true,
-    path    => 'C:/folder_a',
-    source_permissions => ignore,
-    notify  => Exec['install.bat'],
+    path    => '/tmp/folder_a',
   }
 
   exec { 'test_cmd':
-    path      => $::path,
-    command   => 'cmd.exe /c C:/test.cmd',
-    provider  => windows,
-    subscribe => File['folder_a'],
-    logoutput => true,
+    command     => '/bin/echo hello',
+    subscribe   => File['folder_a'],
     refreshonly => true,
+    logoutput   => true,
   }
 }
 
