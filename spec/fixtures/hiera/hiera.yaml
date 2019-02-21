@@ -1,9 +1,12 @@
 ---
 version: 5
-defaults:
+defaults: 
   datadir: data
   data_hash: yaml_data
+
 hierarchy:
-  - name: "All levels"
-    paths:
-      - common.yaml
+  - name: "Test Message"
+    path: "test/%{testname}.yaml"
+
+  - name: "Common"
+    path: "common.yaml"
