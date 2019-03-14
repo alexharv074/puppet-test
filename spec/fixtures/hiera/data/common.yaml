@@ -1,12 +1,14 @@
 ---
 test::users:
-  joed:
-    locked: false
-    comment: System Operator
-    uid: '1700'
-    gid: '1700'
-    groups:
-    - admin
-    - sudonopw
-    sshkeys:
-    - ssh-rsa ...Hw== sysop+moduledevkey@puppetlabs.com
+  app1:
+    ensure: present
+    home: /home/app1
+    password: '!!'
+    password_max_age: 99999
+    password_min_age: 0
+  app2:
+    ensure: present
+    home: /home/app2
+    password: '!!'
+    password_max_age: 99999
+    password_min_age: 0

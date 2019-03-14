@@ -1,8 +1,7 @@
-class test {
-  $myyaml = parseyaml(file('test/myyaml.yaml'))
-  notice($myyaml)
-  $myjson = parsejson(file('test/myjson.json'))
-  notice($myjson)
+class test (Hash[String,Hash] $users) {
+  $users.each |$user,$user_hash| {
+    user { $user: * => $user_hash }
+  }
 }
 
-include test
+#include test
