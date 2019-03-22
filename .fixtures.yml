@@ -1,5 +1,7 @@
 fixtures:
   forge_modules:
+    apt: puppetlabs/apt
     stdlib: puppetlabs/stdlib
+    translate: puppetlabs/translate
   symlinks:
     test: "#{source_dir}"

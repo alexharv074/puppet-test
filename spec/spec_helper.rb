@@ -9,9 +9,15 @@ RSpec.configure do |c|
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.parser = 'future'
   c.default_facts = {
-    'osfamily' => 'RedHat',
-    'operatingsystem' => 'RedHat',
-    'operatingsystemmajrelease' => '7',
-    'ipaddress' => '10.0.0.10',
+    'osfamily' => 'Debian',
+    'operatingsystem' => 'Ubuntu',
+    'os' => {
+      'name' => 'Ubuntu',
+      'release' => {
+        'full' => '16.04',
+      },
+    },
+    'lsbdistcodename' => 'mycode',
+    'lsbdistrelease' => '16.04',
   }
 end
