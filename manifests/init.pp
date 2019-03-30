@@ -1,15 +1,11 @@
 class test {
-  class { 'apt':
-    purge => {
-      "/etc/apt/sources.list" => true
+  $resource_adapter_instances = lookup('resource_adapter_instances', {})
+  $resource_adapter_paths =
+    $resource_adapter_instances.map |$x| {
+      [$x[1]['adapter_plan_dir'], $x[1]['adapter_plan']].join('/')
     }
-  }
-  apt::source { "archive.ubuntu.com-${lsbdistcodename}":
-    location => 'http://archive.ubuntu.com/ubuntu',
-    key      => '630239CC130E1A7FD81A27B140976EAF437D05B5',
-    repos    => 'main universe multiverse restricted',
-  }
-  Apt::Source["archive.ubuntu.com-${lsbdistcodename}"] -> Package['dirmngr']
+    .unique
+  notice($resource_adapter_paths)
 }
 
-#include test
+include test

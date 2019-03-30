@@ -1,14 +1,11 @@
 ---
-test::users:
-  app1:
-    ensure: present
-    home: /home/app1
-    password: '!!'
-    password_max_age: 99999
-    password_min_age: 0
-  app2:
-    ensure: present
-    home: /home/app2
-    password: '!!'
-    password_max_age: 99999
-    password_min_age: 0
+resource_adapter_instances:
+  'Adp1':
+    adapter_plan_dir: "/opt/weblogic/middleware"
+    adapter_plan:     'Plan_DB.xml'
+  'Adp2':
+    adapter_plan_dir: "/opt/weblogic/middleware"
+    adapter_plan:     'ODB_Plan_DB.xml'
+  'Adp3':
+    adapter_plan_dir: "/opt/weblogic/middleware"
+    adapter_plan:     'Plan_DB.xml'
