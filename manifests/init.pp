@@ -1,11 +1,25 @@
-class test {
-  $resource_adapter_instances = lookup('resource_adapter_instances', {})
-  $resource_adapter_paths =
-    $resource_adapter_instances.map |$x| {
-      [$x[1]['adapter_plan_dir'], $x[1]['adapter_plan']].join('/')
-    }
-    .unique
-  notice($resource_adapter_paths)
+#class test (
+#  Struct[{
+#    name          => String,
+#    region        => String,
+#    single_nat_gw => Boolean,
+#    create        => Boolean,
+#    supernet      => String,
+#  }] $prod_vpc = {}
+#) {
+#  notice($prod_vpc)
+#}
+
+class test (
+  Struct[{
+    name          => String,
+    region        => String,
+    single_nat_gw => Boolean,
+    create        => Boolean,
+    supernet      => String,
+  }] $prod_vpc = undef
+) {
+  notice($prod_vpc)
 }
 
 include test
