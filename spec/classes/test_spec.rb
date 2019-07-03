@@ -1,19 +1,9 @@
 require 'spec_helper'
-require 'rspec-puppet/cache'
-
-module RSpec::Puppet
-  module Support
-    def self.clear_cache
-      @@cache = RSpec::Puppet::Cache.new
-    end
-  end
-end
+require 'rspec-puppet-utils'
 
 def mock_mmf(return_value)
-  RSpec::Puppet::Support.clear_cache
-  Puppet::Parser::Functions.newfunction(:'my_mocked_function', type: :rvalue) do |_args|
-    return return_value
-  end
+  f = MockFunction.new('my_mocked_function')
+  f.expected.returns(return_value)
 end
 
 describe 'test' do
