@@ -5,7 +5,7 @@ end
 require 'puppetlabs_spec_helper/module_spec_helper'
 
 RSpec.configure do |c|
-#  c.formatter = :documentation
+  c.formatter = :documentation
   c.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
   c.parser = 'future'
   c.default_facts = {
