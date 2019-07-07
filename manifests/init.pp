@@ -1,7 +1,2 @@
-class test {
-  #$result = 'foo'
-  $result = my_mocked_function('foo')
-  file { 'under_test':
-    content => $result,
-  }
-}
+$myvar = regsubst('/path/example', /\//, '-', 'G')
+notice($myvar)
