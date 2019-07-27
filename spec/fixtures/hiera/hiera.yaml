@@ -1,8 +1,16 @@
 ---
 version: 5
-defaults:  # Used for any hierarchy level that omits these keys.
-  datadir: data         # This path is relative to hiera.yaml's directory.
-  data_hash: yaml_data  # Use the built-in YAML backend.
+defaults:
+  datadir: data
+  data_hash: yaml_data
+
 hierarchy:
-  - name: "Apps" # Uses custom facts.
-    path: "apps/%{facts.appname}.yaml"
+  - name: "Secret data: per-node, per-datacenter, common"
+    lookup_key: eyaml_lookup_key
+    path: "encrypted.yaml"
+    options:
+      pkcs7_private_key: ./keys/private_key.pkcs7.pem
+      pkcs7_public_key:  ./keys/public_key.pkcs7.pem
+
+  - name: "Glob levels"
+    glob: "*/foo/file.yaml"
