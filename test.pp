@@ -1,12 +1,10 @@
-include stdlib
-
-$dirs = [
-  '/tmp/data',
-  '/tmp/data/APP',
-  range('/tmp/data/APP/app01', '/tmp/data/APP/app10')
-]
-
-file { $dirs:
-  ensure  => directory,
-  mode    => '750',
+exec { 'Link /tmp/a':
+#  command => "
+#    mv /var/cache/apt/archives /opt/apt-archives ;
+#    ln -s /opt/apt-archives /var/cache/apt/archives";
+  command => "mv /tmp/a /tmp/b
+              ln -s /tmp/b /tmp/a
+              ",
+  path    => '/bin',
+  unless  => 'test -L /tmp/a',
 }
