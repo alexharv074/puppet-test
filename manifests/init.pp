@@ -1,12 +1,6 @@
 class test {
-  file_line { 'qux':
-    path => '/tmp/alex',
-    line => 'qux',
-  }
-  exec { '/bin/echo hello world':
-    refreshonly => true,
-    subscribe   => File_line['qux'],
+  $notify_resources = lookup('notify_resources')
+  $notify_resources.each |$k,$v| {
+    notify { $k: * => $v }
   }
 }
-
-include test

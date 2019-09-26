@@ -1,11 +1,7 @@
 ---
-resource_adapter_instances:
-  'Adp1':
-    adapter_plan_dir: "/opt/weblogic/middleware"
-    adapter_plan:     'Plan_DB.xml'
-  'Adp2':
-    adapter_plan_dir: "/opt/weblogic/middleware"
-    adapter_plan:     'ODB_Plan_DB.xml'
-  'Adp3':
-    adapter_plan_dir: "/opt/weblogic/middleware"
-    adapter_plan:     'Plan_DB.xml'
+notify_resources:
+  notify1:
+    message: I am notify 1
+    require: Notify[notify2]
+  notify2:
+    message: I am notify 2
