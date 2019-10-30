@@ -1,5 +1,7 @@
 fixtures:
   forge_modules:
-    stdlib: puppetlabs/stdlib
+    wait_for:
+      repo: ../puppet-wait-for
+      ref: 6165c597fa17fe909ac9da824ff10046dde00874
   symlinks:
     test: "#{source_dir}"
