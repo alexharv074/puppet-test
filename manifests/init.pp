@@ -1,8 +1,6 @@
-$content = 'xxx'
-
 class klass1 {
   file { '/tmp/abc':
-    content => $::content,
+    content => 'xxx',
   }
 }
 
@@ -15,7 +13,12 @@ class stage0 {
 # file /tmp/def.
 class stage1 {
   file { '/tmp/def':
-    content => "Contents: ${::content}",
+    content => inline_template("<% contents = begin
+                File.read('/tmp/abc')
+              rescue
+                ''
+              end -%>
+Contents: <%= contents %>")
   }
 }
 
