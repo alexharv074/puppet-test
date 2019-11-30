@@ -1,7 +1,12 @@
 ---
-notify_resources:
-  notify1:
-    message: I am notify 1
-    require: Notify[notify2]
-  notify2:
-    message: I am notify 2
+profile::example::firewalls:
+  - serverclass1:
+    label: http
+    port: 80
+    label: https
+    port: 443
+  - serverclass2:
+    label: ssh
+    port: 22
+    label: telnet
+    port: 21
