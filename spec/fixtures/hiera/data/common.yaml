@@ -1,12 +1,8 @@
 ---
 profile::example::firewalls:
-  - serverclass1:
-    label: http
-    port: 80
-    label: https
-    port: 443
-  - serverclass2:
-    label: ssh
-    port: 22
-    label: telnet
-    port: 21
+  serverclass1:
+    http: 80
+    https: 443
+  serverclass2:
+    ssh: 22
+    telnet: 21
